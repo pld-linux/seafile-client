@@ -8,25 +8,27 @@ Source0:	https://github.com/haiwen/seafile-client/archive/v%{version}/%{name}-%{
 # Source0-md5:	c1efe86775068aa9f42125bf70192931
 URL:		https://www.seafile.com/
 BuildRequires:	Qt5Core-devel
-BuildRequires:	Qt5WebKit-devel
-BuildRequires:	Qt5Test-devel
 BuildRequires:	Qt5DBus-devel
-BuildRequires:	appstream-glib
+BuildRequires:	Qt5Gui-devel
+BuildRequires:	Qt5Network-devel
+BuildRequires:	Qt5Test-devel
+BuildRequires:	Qt5Widgets-devel
 BuildRequires:	bash
 BuildRequires:	ccnet-devel
 BuildRequires:	cmake
 BuildRequires:	desktop-file-utils
 BuildRequires:	jansson-devel
 BuildRequires:	libsearpc-devel
+BuildRequires:	libstdc++-devel
 BuildRequires:	libuuid-devel
 BuildRequires:	openssl-devel
+BuildRequires:	pkgconfig
 BuildRequires:	qt5-build
 BuildRequires:	qt5-linguist
 BuildRequires:	qt5-qmake
-BuildRequires:	qt5-qttools
 BuildRequires:	rpmbuild(macros) >= 1.596
 BuildRequires:	seafile-devel
-BuildRequires:	sqlite-devel
+BuildRequires:	sqlite3-devel
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
