@@ -1,11 +1,11 @@
 Summary:	Seafile cloud storage desktop client
 Name:		seafile-client
-Version:	5.1.1
-Release:	3
+Version:	6.2.5
+Release:	1
 License:	Apache v2.0
 Group:		Applications/Networking
 Source0:	https://github.com/haiwen/seafile-client/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	c1efe86775068aa9f42125bf70192931
+# Source0-md5:	d047a1dea78d8d1e7562acc4a66c1666
 URL:		https://www.seafile.com/
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5DBus-devel
