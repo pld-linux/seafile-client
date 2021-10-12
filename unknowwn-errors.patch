@@ -1,0 +1,34 @@
+--- seafile-client-8.0.4/src/utils/seafile-error.cpp~	2021-09-17 04:23:54.000000000 +0200
++++ seafile-client-8.0.4/src/utils/seafile-error.cpp	2021-10-12 23:38:32.287064065 +0200
+@@ -99,14 +99,6 @@
+         case SYNC_ERROR_ID_REMOVE_UNCOMMITTED_FOLDER:
+             error_str = QObject::tr("A folder that may contain not-yet-uploaded files is moved to seafile-recycle-bin folder.");
+             break;
+-#if !defined(Q_OS_WIN32)
+-        case SYNC_ERROR_ID_INVALID_PATH_ON_WINDOWS:
+-            error_str = QObject::tr("The file path contains symbols that are not supported by the Windows system");
+-            break;
+-#endif
+-        case SYNC_ERROR_ID_LIBRARY_TOO_LARGE:
+-            error_str = QObject::tr("Library is too large to sync.");
+-            break;
+         default:
+             qWarning("Unknown sync error");
+     }
+--- seafile-client-8.0.4/src/message-poller.cpp~	2021-09-17 04:23:54.000000000 +0200
++++ seafile-client-8.0.4/src/message-poller.cpp	2021-10-12 23:39:51.737017902 +0200
+@@ -176,14 +176,6 @@
+         case SYNC_ERROR_ID_REMOVE_UNCOMMITTED_FOLDER:
+             msg = tr("Folder %1 is moved to seafile-recycle-bin folder since it contains not-yet uploaded files.").arg(path);
+             break;
+-#if !defined(Q_OS_WIN32)
+-        case SYNC_ERROR_ID_INVALID_PATH_ON_WINDOWS:
+-            msg = tr("The file path %1 contains symbols that are not supported by the Windows system.").arg(path);
+-            break;
+-#endif
+-        case SYNC_ERROR_ID_LIBRARY_TOO_LARGE:
+-            msg = tr("Library is too large to sync.");
+-            break;
+         default:
+             qWarning("Unknown sync error id %d", err_id);
+             json_decref(object);

@@ -1,11 +1,12 @@
 Summary:	Seafile cloud storage desktop client
 Name:		seafile-client
-Version:	7.0.7
+Version:	8.0.4
 Release:	1
 License:	Apache v2.0
 Group:		Applications/Networking
 Source0:	https://github.com/haiwen/seafile-client/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	d518b25f48526667f078c08793d512fc
+# Source0-md5:	f1962a9033be781bf68acccc43c895ea
+Patch0:		unknowwn-errors.patch
 URL:		https://www.seafile.com/
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5DBus-devel
@@ -43,9 +44,14 @@ team.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-%cmake \
+mkdir -p build
+cd build
+%cmake ../ \
+	-DCMAKE_C_FLAGS="%{rpmcflags}" \
+	-DCMAKE_CXX_FLAGS="%{rpmcxxflags}" \
 	-Dqmake_executable:FILEPATH=/usr/bin/qmake-qt5 \
 	-DUSE_QT5=ON \
 	-DCMAKE_BUILD_TYPE=Release .
@@ -54,7 +60,7 @@ team.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} install \
+%{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 desktop-file-validate $RPM_BUILD_ROOT%{_desktopdir}/seafile.desktop
